@@ -38,8 +38,9 @@ class Net(nn.Module):
 def predict(img):
     # モデルへの入力
     img = img.convert("L")
+    img = 255- img
     img = img.resize((img_size, img_size))
-    img = 255 - img
+#    img = 255 - img
     normalize = transforms.Normalize((0.0), (1.0))  # 平均値を0、標準偏差を1に
     to_tensor = transforms.ToTensor()
     transform = transforms.Compose([to_tensor, normalize])
