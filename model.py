@@ -38,9 +38,16 @@ def predict(img):
     # モデルへの入力
     img = img.convert("L")
     img = img.resize((img_size, img_size))
-    transform = transforms.Compose([transforms.ToTensor(),
-                                    transforms.Normalize((0.0, 0.0), (1.0, 1.0))  # 平均値を0、標準偏差を1に
-                                ])
+    img = 255 - img
+    normalize = transforms.Normalize((0.0), (1.0))  # 平均値を0、標準偏差を1に
+    to_tensor = transforms.ToTensor()
+    transform = transforms.Compose([to_tensor, normalize])
+
+
+    #transform = transforms.Compose([transforms.ToTensor(),
+    #                                transforms.Normalize((0.0, 0.0), (1.0, 1.0))  # 平均値を0、標準偏差を1に
+    #                            ])
+
     img = transform(img)
     x = img.reshape(1, 1, img_size, img_size)
 
