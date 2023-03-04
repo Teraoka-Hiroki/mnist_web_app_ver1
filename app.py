@@ -25,7 +25,7 @@ if img_file is not None:
         st.write("")
 
         # 予測
-        img=255 - img
+#        img=255 - img
         results = predict(img)
 
         # 結果の表示
