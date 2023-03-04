@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from torchvision import models, transforms
 from PIL import Image
 import numpy as np
-import cv2
+from PIL import ImageOps
 
 
 classes = [" 0 ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
@@ -40,7 +40,7 @@ class Net(nn.Module):
 def predict(img):
     # モデルへの入力
     img = img.convert("L")
-    img = cv2.bitwise_not(img)
+    img = ImageOps.invert(img)
 #    img = 255- img
     img = img.resize((img_size, img_size))
 #    img = 255 - img

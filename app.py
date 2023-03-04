@@ -6,8 +6,8 @@ from model import predict
 
 st.set_option("deprecation.showfileUploaderEncoding", False)
 
-st.sidebar.title("画像認識アプリ")
-st.sidebar.write("オリジナルの画像認識モデルを使って何の画像かを判定します。")
+st.sidebar.title("手書き数字判定アプリ")
+st.sidebar.write("手書き数字の画像が何の数字であるかを判定。")
 
 st.sidebar.write("")
 
@@ -32,7 +32,7 @@ if img_file is not None:
         st.subheader("判定結果")
         n_top = 3  # 確率が高い順に3位まで返す
         for result in results[:n_top]:
-            st.write(str(round(result[1]*100, 2)) + "%の確率で" + result[0] + "です。")
+            st.write(str(round(result[1]*100, 2)) + "%の確率で" + result[0] + "。")
 
         # 円グラフの表示
         pie_labels = [result[0] for result in results[:n_top]]
