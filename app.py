@@ -25,7 +25,7 @@ if img_file is not None:
         st.write("")
 
         # 予測
-#        img=255 - img
+        img=255 - img
         results = predict(img)
 
         # 結果の表示
@@ -35,10 +35,10 @@ if img_file is not None:
             st.write(str(round(result[1]*100, 2)) + "%の確率で" + result[0] + "です。")
 
         # 円グラフの表示
-        pie_labels = [result[1] for result in results[:n_top]]
+        pie_labels = [result[0] for result in results[:n_top]]
         pie_labels.append("others")
-        pie_probs = [result[2] for result in results[:n_top]]
-        pie_probs.append(sum([result[2] for result in results[n_top:]]))
+        pie_probs = [result[1] for result in results[:n_top]]
+        pie_probs.append(sum([result[1] for result in results[n_top:]]))
         fig, ax = plt.subplots()
         wedgeprops={"width":0.3, "edgecolor":"white"}
         textprops = {"fontsize":6}
