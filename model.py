@@ -4,6 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import models, transforms
 from PIL import Image
+import numpy as np
 
 classes = ["「0」", "「1」", "「2」", "「3」", "「4」", "「5」", "「6」", "「7」", "「8」", "「9」"]
 #classes_en = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
@@ -38,7 +39,7 @@ def predict(img):
     # モデルへの入力
     img = img.convert("L")
     img = img.resize((img_size, img_size))
-    img = 255 - img
+#    img = 255 - img
     normalize = transforms.Normalize((0.0), (1.0))  # 平均値を0、標準偏差を1に
     to_tensor = transforms.ToTensor()
     transform = transforms.Compose([to_tensor, normalize])
