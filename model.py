@@ -5,8 +5,10 @@ import torch.nn.functional as F
 from torchvision import models, transforms
 from PIL import Image
 import numpy as np
+import cv2
 
-classes = ["「0」", "「1」", "「2」", "「3」", "「4」", "「5」", "「6」", "「7」", "「8」", "「9」"]
+
+classes = [" 0 ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 #classes_en = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
 n_class = len(classes)
 img_size = 28
@@ -38,6 +40,7 @@ class Net(nn.Module):
 def predict(img):
     # モデルへの入力
     img = img.convert("L")
+    img = cv2.bitwise_not(img)
 #    img = 255- img
     img = img.resize((img_size, img_size))
 #    img = 255 - img
