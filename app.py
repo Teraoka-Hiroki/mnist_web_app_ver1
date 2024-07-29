@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from model import predict
 
-st.set_option("deprecation.showfileUploaderEncoding", False)
+#st.set_option("deprecation.showfileUploaderEncoding", False)
 
 st.sidebar.title("手書き数字判定アプリ")
 st.sidebar.write("手書き数字の画像が何の数字であるかを判定。")
